@@ -3,15 +3,16 @@ import {userState} from "react";
 
 const Login_page = () => {
     /**const [email,setEmail] = userState('');
-    const [user_type,setType] = userState('student');
+    const [user_type,setType] = userState('student');**/
     const handellogin = (e) =>{
         e.preventDefault();
-        pull data from php server to verify data
+        console.log("login")
+        /**(pull data from php server to verify data)**/
     }
 
-    **/
+    
     return(
-    <form >
+    <form onSubmit={handellogin}>
         <input 
         type="email"
         /**value={email}
