@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import Login_page  from "./login";
 import About from "./About";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
@@ -27,6 +28,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="about" element={<About />} />
+          <Route path="login" element={<Login_page />} />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
