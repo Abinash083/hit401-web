@@ -8,10 +8,10 @@ const Login_page = () => {
     const handellogin = (e) =>{
         e.preventDefault();
         console.log("login")
-        /**(pull data from php server to verify data)**/
+        /**(pull data from php server to verify data)
+         ***/
     }
 
-    
     return(
     <form onSubmit={handellogin}>
         <input 
