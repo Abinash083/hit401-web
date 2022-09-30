@@ -26,10 +26,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ChakraProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/login" element={<Login_page />} />
+          <Route path="/app" element={<App />} />
+          <Route path="/" element={<Login_page />} />
           <Route path="about" element={<About />} />
-          <Route path="login" element={<Login_page />} />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
