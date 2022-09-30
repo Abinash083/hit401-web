@@ -11,7 +11,7 @@ input, select {
     background-color: rgb(237, 235, 255);
   }
   
-   button{
+   a, button{
     width: 50%;
     background-color: #4CAF50;
     color: white;
@@ -24,7 +24,7 @@ input, select {
     justify-content: center;
   }
   
-  button:hover {
+  button:hover, a:hover {
     background-color: #337c37;
   }
   
@@ -33,4 +33,10 @@ input, select {
     border-radius: 5px;
     
   }
+  .content {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 10px;
+  }  
   

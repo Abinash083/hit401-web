@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import Login_page  from "./login";
 import About from "./About";
-import Login_page from "./login"
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
