@@ -1,37 +1,50 @@
-import {userState} from "react";
-import App from "./App";
+import {useState} from "react";
+import "./login.css";
 
 
 const Login_page = () => {
-    /**const [email,setEmail] = userState('');
-    const [user_type,setType] = userState('student');**/
+    const [email,setEmail] = useState('');
+    const [user_type,setType] = useState('student');
+    const [password,setPassword] = useState(Math.floor(Math.random() * (9999 - 1111)) + 1111);
+    
     const handellogin = (e) =>{
         e.preventDefault();
-        console.log("login")
-        /**(pull data from php server to verify data)**/
+        setPassword(Math.floor(Math.random() * (9999 - 1111)) + 1111);
+        console.log(password);
+        
     }
-
     
+
     return(
-    <form onSubmit={handellogin}>
-        <input 
-        type="email"
-        /**value={email}
-        onChange={(e) => setEmail(e.target.value)}**//>
-        <label  >Email address</label>
-       
-       <br></br>
-        {/* <input type="password" id="Password"  />
-        <label >Password</label> */}
-        <label >Choose a login type:</label>
-            <select /**value={user_type} onChange={(e) => setType(e.target.value)}**/ >
+        <div className="content">
+            <label >Choose a login type:</label>
+            <br></br>
+            <select value={user_type} onChange={(e) => setType(e.target.value)} >
                 <option value="admin">Admin</option>
                 <option value="student">Student</option>
                 <option value="lecturer">Lecturer</option>
             </select>
-        <br></br>
-        <a href="/">Send Password</a>
-    </form>)
+            <br></br>
+            <form>
+            
+            {user_type === "student" && <label  >Email address : </label>}
+            <br></br>
+            {user_type === "student" && <input 
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}/>}
+            
+            <br></br>
+            
+            
+            <br></br>
+            {user_type === "student" && <button  onClick= {handellogin}>Send Password</button>}
+            {user_type !== "student" && <a href="http://localhost/login.php"  >Login as {user_type}</a>}
+        </form>
+        </div>
+    )
 
 };
 export default Login_page;
