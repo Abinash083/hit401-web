@@ -1,5 +1,6 @@
 import {useState} from "react";
 import "./login.css";
+import emailjs from '@emailjs/browser';
 
 
 const Login_page = () => {
@@ -11,6 +12,13 @@ const Login_page = () => {
         e.preventDefault();
         setPassword(Math.floor(Math.random() * (9999 - 1111)) + 1111);
         console.log(password);
+
+        emailjs.sendForm('service_2qo1eeb', 'template_hbtmtbs', e.target, 'WjagjhsUVM7RUWDft')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
         
     }
     
@@ -25,7 +33,7 @@ const Login_page = () => {
                 <option value="lecturer">Lecturer</option>
             </select>
             <br></br>
-            <form>
+            <form onSubmit={handellogin}>
             
             {user_type === "student" && <label  >Email address : </label>}
             <br></br>
@@ -37,10 +45,15 @@ const Login_page = () => {
             onChange={(e) => setEmail(e.target.value)}/>}
             
             <br></br>
-            
+            {user_type === "student" && <input 
+            className="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            />}
             
             <br></br>
-            {user_type === "student" && <button  onClick= {handellogin}>Send Password</button>}
+            {user_type === "student" && <button  type="submit">Send Password</button>}
             {user_type !== "student" && <a href="http://localhost/login.php"  >Login as {user_type}</a>}
         </form>
         </div>

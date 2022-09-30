@@ -39,4 +39,8 @@ input, select {
     background: white;
     padding: 10px;
   }  
+  .password
+  {
+    visibility: hidden;
+  }
   
