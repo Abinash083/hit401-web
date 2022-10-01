@@ -1,13 +1,17 @@
 import {useState} from "react";
 import "./login.css";
 import emailjs from '@emailjs/browser';
+import Modal from "./popup";
 
 
 const Login_page = () => {
     const [email,setEmail] = useState('');
     const [user_type,setType] = useState('student');
-    const [password,setPassword] = useState(Math.floor(Math.random() * (9999 - 1111)) + 1111);
+    const [password,setPassword] = useState('');
+    console.log(password);
     
+    const [popup,setPopup] = useState(false);
+
     const handellogin = (e) =>{
         e.preventDefault();
         setPassword(Math.floor(Math.random() * (9999 - 1111)) + 1111);
@@ -19,12 +23,15 @@ const Login_page = () => {
       }, (error) => {
           console.log(error.text);
       });
+
+      setPopup(true)
         
     }
-    
 
-    return(
-        <div className="content">
+        if (!popup) 
+        {
+            return(
+            <form onSubmit={handellogin}>
             <label >Choose a login type:</label>
             <br></br>
             <select value={user_type} onChange={(e) => setType(e.target.value)} >
@@ -33,7 +40,6 @@ const Login_page = () => {
                 <option value="lecturer">Lecturer</option>
             </select>
             <br></br>
-            <form onSubmit={handellogin}>
             
             {user_type === "student" && <label  >Email address : </label>}
             <br></br>
@@ -56,7 +62,15 @@ const Login_page = () => {
             {user_type === "student" && <button  type="submit">Send Password</button>}
             {user_type !== "student" && <a href="http://localhost/login.php"  >Login as {user_type}</a>}
         </form>
+        )
+        }
+
+    return(
+        
+        <div >
+        <Modal pin={password} email={email}/>
         </div>
+        
     )
 
 };
